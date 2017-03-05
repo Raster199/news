@@ -18,7 +18,7 @@ import static javax.persistence.FetchType.EAGER;
 public class News {
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "category_id")
     private Integer categoryId;
     @Column(name = "author")
