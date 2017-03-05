@@ -1,11 +1,8 @@
 package ru.developer.news.model;
 
-import lombok.Data;
-import org.springframework.data.convert.Jsr310Converters;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import static javax.persistence.FetchType.EAGER;
@@ -24,7 +21,7 @@ public class News {
     @Column(name = "author")
     private String author;
     @Column(name = "name_news")
-    private String nameNews;
+    private String title;
     @Column(name = "context")
     private String context;
     @Column(name = "date_public")
@@ -38,7 +35,7 @@ public class News {
     @Override
     public String toString() {
         return "News{" +
-                "nameNews='" + nameNews + '\'' +
+                "nameNews='" + title + '\'' +
                 '}';
     }
 
@@ -52,7 +49,7 @@ public class News {
         if (getId() != news.getId()) return false;
         if (!getCategoryId().equals(news.getCategoryId())) return false;
         if (!getAuthor().equals(news.getAuthor())) return false;
-        if (!getNameNews().equals(news.getNameNews())) return false;
+        if (!getTitle().equals(news.getTitle())) return false;
         if (!getContext().equals(news.getContext())) return false;
         return getDatePublic().equals(news.getDatePublic());
     }
@@ -62,7 +59,7 @@ public class News {
         int result = getId();
         result = 31 * result + getCategoryId().hashCode();
         result = 31 * result + getAuthor().hashCode();
-        result = 31 * result + getNameNews().hashCode();
+        result = 31 * result + getTitle().hashCode();
         result = 31 * result + getContext().hashCode();
         result = 31 * result + getDatePublic().hashCode();
         return result;
@@ -95,12 +92,12 @@ public class News {
         return this;
     }
 
-    public String getNameNews() {
-        return nameNews;
+    public String getTitle() {
+        return title;
     }
 
-    public News setNameNews(String nameNews) {
-        this.nameNews = nameNews;
+    public News setTitle(String nameNews) {
+        this.title = nameNews;
         return this;
     }
 
